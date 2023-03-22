@@ -12,6 +12,7 @@ RM := rm -rf
 -include Drivers/STM32F4xx_HAL_Driver/Src/subdir.mk
 -include Core/Startup/subdir.mk
 -include Core/Src/subdir.mk
+-include Core/.metadata/.plugins/org.eclipse.cdt.make.core/subdir.mk
 -include objects.mk
 
 ifneq ($(MAKECMDGOALS),clean)
@@ -60,8 +61,8 @@ all: main-build
 main-build: FRA222lab3.elf secondary-outputs
 
 # Tool invocations
-FRA222lab3.elf FRA222lab3.map: $(OBJS) $(USER_OBJS) C:\Users\Asus\STM32CubeIDE\workspace_1.11.0\FRA222lab3\STM32F411RETX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
-	arm-none-eabi-gcc -o "FRA222lab3.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m4 -T"C:\Users\Asus\STM32CubeIDE\workspace_1.11.0\FRA222lab3\STM32F411RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="FRA222lab3.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+FRA222lab3.elf FRA222lab3.map: $(OBJS) $(USER_OBJS) C:\Users\Asus\OneDrive\Documents\GithubV2\FRA222lab3\FRA222lab3\STM32F411RETX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
+	arm-none-eabi-gcc -o "FRA222lab3.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m4 -T"C:\Users\Asus\OneDrive\Documents\GithubV2\FRA222lab3\FRA222lab3\STM32F411RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="FRA222lab3.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
 	@echo 'Finished building target: $@'
 	@echo ' '
 

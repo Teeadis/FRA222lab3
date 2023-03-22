@@ -53,7 +53,7 @@ float MotorSetduty = 50;
 
 float MotorSetRPM = 0;
 float MotorReadRPM = 0;
-uint32_t MotorControlEnable = 1;
+uint32_t MotorControlEnable = 0;
 
 /* USER CODE END PV */
 
@@ -131,7 +131,14 @@ int main(void)
 	  	  		  __HAL_TIM_SET_COMPARE(&htim1,TIM_CHANNEL_1,duty);
 
 	  	  		 if(MotorControlEnable == 1){
-	  	  			 MotorSetduty = MotorSetRPM*(1000/25);
+	  	  			 //duty = MotorSetRPM*(1000/25);
+	  	  			 if ((MotorReadRPM < MotorSetRPM) & (duty<=1000)){
+	  	  				duty += 20;
+	  	  			 }
+	  	  			 else if((MotorReadRPM > MotorSetRPM) & (duty>=0)){
+	  	  				duty -= 20;
+	  	  			 }
+
 	  	  		 }
 				 else{
 					 duty = MotorSetduty*10 ;
